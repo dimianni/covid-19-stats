@@ -1,0 +1,12 @@
+body{
+    background-color: #39414e;
+    color: #ccc;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
