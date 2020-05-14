@@ -1,33 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import { fetchCountries } from '../../api';
-import { NativeSelect, FormControl } from '@material-ui/core';
-
 import styles from './Country.module.css';
 
 
-const Country = ({ handleCountryChange}) => {
+// Receiving list of countries
+import { fetchCountries } from '../../api';
 
-    const [fetchedCountries, setFetchedCountries] = useState([])
+const Country = ({ handleCountryChange }) => {
 
+    // state = {
+    //     fetchedCountries:[]
+    // } Equals to:
+    const [receivedCountries, setReceivedCountries] = useState([])
+
+    // Instead of componentDidMount we can use:
     useEffect(() => {
+
+        // Instead of setState call a function
         const fetchAPI = async () => {
-            setFetchedCountries(await fetchCountries())
+            setReceivedCountries(await fetchCountries())
         }
-
         fetchAPI();
-        // Is going to change only when 'setFetchedCountries' change
-    }, [setFetchedCountries])
-
-    // console.log(fetchedCountries);
+        // Is going to change only when 'setReceivedCountries' change
+    }, [setReceivedCountries])
 
 
     return (
-        <FormControl className={styles.formControl}>
-            <NativeSelect defaultValue='' onChange={(e) => handleCountryChange(e.target.value)}>
-                {/* <option value="">Global</option> */}
-                {fetchedCountries.map((country) => <option key={country} value={country}>{country}</option>)}
-            </NativeSelect>
-        </FormControl>
+        <div className={styles.selector}>
+            <label htmlFor="countries">Please select a country:</label>
+            <select id='countries' defaultValue='' onChange={(e) => handleCountryChange(e.target.value)}>
+                <option value="Spain" selected>Spain</option>
+                {receivedCountries.sort().map((country) => <option key={country} value={country}>{country}</option>)}
+            </select>
+        </div>
+
+
     );
 }
 

@@ -2,18 +2,14 @@ import React from 'react';
 import { Line, Bar } from 'react-chartjs-2';
 import styles from './Chart.module.css';
 
-const Chart = ({ countryData }) => {
+
+
+const Chart = ({ countryData, country }) => {
 
     // console.log(countryData);
+    
 
-    const every = (arr, interval, start) => {
-        var result = [];
-        for (var i = start || 0; i < arr.length; i += interval || 1) {
-            result.push(arr[i]);
-        }
-        return result;
-    }
-
+    // Function which calculates the difference of occurrences between days
     function daily(arr) {
         let dailyArr = [];
         for (var i = 1; i < arr.length; i++) {
@@ -26,16 +22,15 @@ const Chart = ({ countryData }) => {
         return dailyArr;
     }
 
-
+    // Before data is loaded 
     let charts = <div>Loading...</div>;
     let dailyChart = null;
     let activeChart = null;
     let totalChart = null;
 
+    // When data IS LOADED
     if (countryData.date) {
 
-        console.log(daily(countryData.confirmed));
-        console.log(countryData.confirmed);
         dailyChart = (
             <Bar
                 data={{
@@ -69,7 +64,9 @@ const Chart = ({ countryData }) => {
                                 }
                             }
                         }]
-                    }
+                    },
+                    title: { display: true, text: `Daily Summary in ${country}` },
+                    datalabels: { display: false }
                 }}
             />
 
@@ -83,7 +80,7 @@ const Chart = ({ countryData }) => {
                         data: countryData.active.map(active => active),
                         label: 'Active',
                         borderColor: 'purple',
-                        backgroundColor: 'purple',
+                        backgroundColor: 'rgba(21, 31, 48, 0.5)',
                         fill: true
                     }]
                 }}
@@ -97,7 +94,8 @@ const Chart = ({ countryData }) => {
                             }
                         }]
                     },
-                    title: { display: true, text: `Currently Active Cases in Spain` }
+                    title: { display: true, text: `Currently Active Cases in ${country}` }, 
+                    datalabels: { display: false }
                 }}
             />
         )
@@ -114,16 +112,20 @@ const Chart = ({ countryData }) => {
                 }}
                 options={{
                     legend: { display: false },
-                    title: { display: true, text: `Total stats in Spain` }
+                    title: { display: true, text: `Total stats in ${country}` },
+                    datalabels: {
+                        display: true,
+                        color: '#fff'
+                    }
                 }}
             />
         )
 
         charts = (
             <div>
-                <div>{activeChart}</div>
-                <div>{dailyChart}</div>
-                <div>{totalChart}</div>
+                <div className={styles.chart}>{activeChart}</div>
+                <div className={styles.chart}>{dailyChart}</div>
+                <div className={styles.chart}>{totalChart}</div>
             </div>
         )
     }

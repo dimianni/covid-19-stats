@@ -23,19 +23,19 @@ class App extends Component {
     
   }
 
-  // handleCountryChange = async (country) => {
+  handleCountryChange = async (country) => {
 
-  //   //fetch the data
+    //fetch the data
 
-  //   const fetchedData = await fetchCountryData(country)
-  //   console.log(fetchedData);
+    const fetchedData = await fetchCountryData(country)
+    console.log(fetchedData);
 
-  //   this.setState({
-  //     data: fetchedData,
-  //     country: country
-  //   })
-  //   // set the state
-  // }
+    this.setState({
+      data: fetchedData,
+      country: country
+    })
+    // set the state
+  }
 
   render() {
 
@@ -48,9 +48,8 @@ class App extends Component {
         <Header />
         <div className={styles.container}>
           {/* <Cards data={data} /> */}
-          {/* <Country handleCountryChange={this.handleCountryChange} /> */}
-          <Chart countryData={data} />
-          {/* <Chart countryData={data} country={country} /> */}
+          <Country handleCountryChange={this.handleCountryChange} />
+          <Chart countryData={data} country={country} />
         </div>
          <Footer />
       </div>
