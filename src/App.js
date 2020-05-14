@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import styles from './App.module.css';
+import Footer from './Components/Footer/Footer'
+import Header from './Components/Header/Header'
 
 import { Cards, Chart, Country } from './Components';
-import { dataFetched } from './api'
+import { fetchCountryData } from './api';
+
 
 class App extends Component {
 
@@ -13,24 +16,26 @@ class App extends Component {
 
   async componentDidMount() {
 
-    const fetchedData = await dataFetched();
+    const fetchedData = await fetchCountryData();
 
-    this.setState({data: fetchedData})
-  }
-
-  handleCountryChange = async (country) => {
-
-    //fetch the data
-
-    const fetchedData = await dataFetched(country)
-    console.log(fetchedData);
+    this.setState({ data: fetchedData })
+    console.log(this.state.data.date);
     
-    this.setState({
-      data: fetchedData,
-      country: country
-    })
-    // set the state
   }
+
+  // handleCountryChange = async (country) => {
+
+  //   //fetch the data
+
+  //   const fetchedData = await fetchCountryData(country)
+  //   console.log(fetchedData);
+
+  //   this.setState({
+  //     data: fetchedData,
+  //     country: country
+  //   })
+  //   // set the state
+  // }
 
   render() {
 
@@ -39,10 +44,15 @@ class App extends Component {
     const { data, country } = this.state;
 
     return (
-      <div className={styles.container}>
-        <Cards data={data} />
-        <Country handleCountryChange={this.handleCountryChange} />
-        <Chart data={data} country={country} />
+      <div className={styles.app}>
+        <Header />
+        <div className={styles.container}>
+          {/* <Cards data={data} /> */}
+          {/* <Country handleCountryChange={this.handleCountryChange} /> */}
+          <Chart countryData={data} />
+          {/* <Chart countryData={data} country={country} /> */}
+        </div>
+         <Footer />
       </div>
     );
   }

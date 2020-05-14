@@ -4,7 +4,7 @@ import Spinner from '../../UI/Spinner/Spinner'
 
 import Card from '../Card/Card'
 
-const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
+const Cards = ({ confirmed, recovered, deaths, active }) => {
 
 
     let cardList = <Spinner />
@@ -14,9 +14,9 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
    
         cardList = (
             <div className={styles.wrapper}>
-                <Card status={status[0]} value={confirmed.value} lastUpdate={lastUpdate} />
-                <Card status={status[1]} value={recovered.value} lastUpdate={lastUpdate} />
-                <Card status={status[2]} value={deaths.value} lastUpdate={lastUpdate} />
+                <Card status={status[0]} value={confirmed.value}  />
+                <Card status={status[1]} value={recovered.value}  />
+                <Card status={status[2]} value={deaths.value} />
             </div>
         )
     }

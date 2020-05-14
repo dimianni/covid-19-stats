@@ -1,0 +1,22 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #495466;
+  color: #d3ebff;
+  height: 50px;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #d3ebff;
+  font-size: 12px;
+  font-weight: normal;
+}

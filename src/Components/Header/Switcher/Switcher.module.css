@@ -1,0 +1,51 @@
+.modeSwitcher {
+	text-align: center;
+}
+
+.modeSwitcher .fieldset {
+	display: inline-block;
+	position: relative;
+	/* padding: 2px; */
+	border-radius: 50em;
+    border: 2px solid #39414e;
+}
+
+.modeSwitcher input[type="radio"] {
+	position: absolute;
+	opacity: 0;
+}
+
+.modeSwitcher label {
+	position: relative;
+	z-index: 1;
+    display: inline-block;  
+	width: 90px;
+	height: 40px;
+	line-height: 40px;
+	cursor: pointer;
+	font-size: 1.4rem;
+	color: #ffffff;
+}
+
+ion-icon{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modeSwitcher .switch {
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	height: 40px;
+	width: 90px;
+	background-color: #39414e;
+	border-radius: 50em;
+	transition: transform 0.5s;
+}
+
+.modeSwitcher input[type="radio"]:checked + label + .switch,
+.modeSwitcher input[type="radio"]:checked + label:nth-of-type(n) + .switch {
+	transform: translateX(90px);
+}
