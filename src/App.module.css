@@ -1,9 +1,3 @@
-body {
-    background-color: #39414e;
-    color: #ccc;
-    font-family: "Roboto", sans-serif;
-}
-
 .container {
     width: 80%;
     margin: 0 auto;
@@ -12,8 +6,29 @@ body {
     justify-content: center;
     align-items: center;
 }
-.app{
+
+.Applight {
+    background-color: #f0f1f5;
     position: relative;
     min-height: 100vh;
     width: 100%;
+}
+
+.Appdark {
+    background-color: #39414e;
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+}
+
+@media (max-width: 850px) {
+    .container {
+        width: 90%;
+    }
+}
+
+@media (max-width: 560px) {
+    .container {
+        width: 100%;
+    }
 }

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import styles from './App.module.css';
-import Footer from './Components/Footer/Footer'
-import Header from './Components/Header/Header'
 
-import { Cards, Chart, Country } from './Components';
+// Destructuring from index.js in Components
+import { Header, Footer, Chart, Country } from './Components';
+
+// Receiving country data
 import { fetchCountryData } from './api';
 
 
@@ -11,7 +12,8 @@ class App extends Component {
 
   state = {
     data: {},
-    country: ''
+    country: '',
+    theme: 'light'
   }
 
   async componentDidMount() {
@@ -19,36 +21,40 @@ class App extends Component {
     const fetchedData = await fetchCountryData();
 
     this.setState({ data: fetchedData })
-    console.log(this.state.data.date);
     
   }
 
+  // Changing state for a specific country
   handleCountryChange = async (country) => {
 
-    //fetch the data
-
+    //fetching the data
     const fetchedData = await fetchCountryData(country)
-    console.log(fetchedData);
 
+    // setting the state
     this.setState({
       data: fetchedData,
       country: country
     })
-    // set the state
+  }
+
+  themeSwitcher = () => {
+    if (this.state.theme === 'light'){
+      this.setState({theme: 'dark'})
+    } else {
+      this.setState({ theme: 'light' })
+    }
   }
 
   render() {
 
     // Destructuring state
-
-    const { data, country } = this.state;
+    const { data, country, theme } = this.state;
 
     return (
-      <div className={styles.app}>
-        <Header />
+      <div className={theme === 'light' ? styles.Applight : styles.Appdark}>
+        <Header themeSwitcher={this.themeSwitcher} theme={theme}/>
         <div className={styles.container}>
-          {/* <Cards data={data} /> */}
-          <Country handleCountryChange={this.handleCountryChange} />
+          <Country handleCountryChange={this.handleCountryChange} theme={theme} />
           <Chart countryData={data} country={country} />
         </div>
          <Footer />

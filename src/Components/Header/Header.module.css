@@ -1,16 +1,69 @@
-.header {
-    background-color: #495466;
-}
 .headerContainer {
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-    width: 180px;
-    height: 50px;
-    padding: 10px;
+  width: 180px;
+  height: 50px;
+  padding: 10px;
+}
+
+/* Header color switcher */
+.dark {
+  background-color: #495466;
+}
+.light {
+  background-color: #168be8;
+}
+
+/* Mode button color switcher */
+.def {
+  width: 150px;
+  background-color: #fff;
+  border-radius: 25px;
+  border: none;
+  text-transform: uppercase;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 1px;
+  font-size: 12px;
+  color: #242931;
+  padding: 9px;
+  transition: all 0.2s;
+  margin: 20px 0;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.def ion-icon {
+  font-size: 14px;
+  padding-left: 5px;
+}
+
+.def:active {
+  transform: scale(0.8, 0.8);
+}
+
+.def.darkMode {
+  background-color: #39414e;
+  color: #fff;
+  transition: all 0.5s;
+}
+
+@media (max-width: 850px) {
+  .headerContainer {
+    width: 90%;
+  }
+}
+
+@media (max-width: 560px) {
+  .headerContainer {
+    width: 95%;
+  }
 }
