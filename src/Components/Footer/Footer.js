@@ -2,9 +2,9 @@ import React from 'react';
 import styles from './Footer.module.css'
 
 
-const Footer = () => {
+const Footer = ({theme}) => {
     return ( 
-        <footer className={styles.footer}>
+        <footer className={theme === 'light' ? styles.light : styles.dark}>
             <div>
                 Built with <span role="img" alt="love" aria-label="">&#10084;&#65039;</span> 
             </div>

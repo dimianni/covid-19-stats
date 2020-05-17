@@ -57,7 +57,7 @@ class App extends Component {
           <Country handleCountryChange={this.handleCountryChange} theme={theme} />
           <Chart countryData={data} country={country} />
         </div>
-         <Footer />
+        <Footer theme={theme} />
       </div>
     );
   }

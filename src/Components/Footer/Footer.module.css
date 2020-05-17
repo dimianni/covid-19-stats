@@ -1,4 +1,27 @@
-.footer {
+.light {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #168be8;
+  color: #fff;
+  height: 50px;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.light a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.dark {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -8,15 +31,15 @@
   align-items: center;
   flex-direction: column;
   background-color: #495466;
-  color: #d3ebff;
+  color: #fff;
   height: 50px;
   font-size: 12px;
   font-weight: 300;
 }
 
-.footer a {
+.dark a {
   text-decoration: none;
-  color: #d3ebff;
+  color: #fff;
   font-size: 12px;
   font-weight: normal;
 }
