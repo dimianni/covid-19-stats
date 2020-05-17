@@ -1,4 +1,5 @@
 .selector {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -75,7 +76,7 @@
   }
 }
 
-@media (max-width: 370px){
+@media (max-width: 420px){
   .selectorView{
     width: 300px;
   }
